@@ -17,6 +17,7 @@
   "homepage": "https://github.com/laurence91810/formationJS#readme",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "jQuery": "^1.7.4",
     "lite-server": "^2.6.1"
   }
 }
