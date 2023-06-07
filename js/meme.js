@@ -32,7 +32,10 @@ class Meme{
                 },
                 body: JSON.stringify(this)
             }
-        )
+        ).then(retour=>retour.json())
+        .then(transformedFormRest =>{
+            this.id = transformedFormRest.id
+        })
 
     }
 
