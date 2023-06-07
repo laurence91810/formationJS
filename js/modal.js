@@ -45,14 +45,37 @@
 
  class Modal{
 
+    #modalTemplateString='\
+    <div id="modal">\
+        <h3 id="modal-title">titre</h3>\
+        <div id="modal-content">content</div>\
+        <div id="modal-button"></div>\
+    </div>'
     #refId
     #modalNode
     constructor(idModal="modal"){
         this.#refId=idModal
-        document.addEventListener('DOMContentLoaded',(evt)=>{
-            this.#modalNode=document.querySelector(`#${this.#refId}`)
-            this.removeModal()
-        })
+        this.#modalNode=document.createElement('div')
+        this.#modalNode.id = this.#refId
+        this.#modalNode.innerHTML = this.#modalTemplateString
+    //     document.addEventListener('DOMContentLoaded',(evt)=>{
+    //         this.#modalNode=document.querySelector(`#${this.#refId}`)
+    //         this.removeModal()
+    //     })
+    }
+
+    /**
+     * exemple de getter et setter
+     */
+
+    get modalId(){
+        return this.#refId
+    }
+
+    set modalId(value){
+        if(value.length>0){
+            this.#refId = value
+        }
     }
    
     /**
