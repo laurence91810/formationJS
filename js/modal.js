@@ -118,7 +118,7 @@
 
 //const modal = new Modal('modal');
 
-class MessageBox extends Modal{
+export class MessageBox extends Modal{
     #okCallBack
     #okButton
     set okCallBack(fn){
@@ -154,7 +154,7 @@ class MessageBox extends Modal{
 const msgBox= new MessageBox();
 
 
-class ConfirmBox extends Modal{
+export class ConfirmBox extends Modal{
     #okCallBack
     #okButton
     set okCallBack(fn){
@@ -209,4 +209,4 @@ class ConfirmBox extends Modal{
 }
 
 
-const confirmgBox= new MessageBox();
+//const confirmgBox= new MessageBox();

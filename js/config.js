@@ -1,1 +1,1 @@
-const REST_ADR = 'http://localhost:1010'
+export const REST_ADR = 'http://localhost:1010'

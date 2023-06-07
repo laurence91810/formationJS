@@ -1,3 +1,6 @@
+import { REST_ADR } from "./config.js"
+
+
 class Meme{
     
     static ressourceName = '/memes'
@@ -14,14 +17,31 @@ class Meme{
     frameSizeX = 0
     frameSizeY = 0
 
-    save=()=>{}
+    get #fullRessourceName(){
+        return `${undefined !== this.id ? Meme.ressourceName +'/'+ this.id :
+        Meme.ressourceName}`
+    }
+
+    save=()=>{
+
+        fetch(`${REST_ADR}${this.#fullRessourceName}`, {
+            
+                method:undefined !== this.id ? 'PUT' : 'POST',
+                headers:{
+                    "Content-Type": 'application/json'
+                },
+                body: JSON.stringify(this)
+            }
+        )
+
+    }
 
     deserialize=(chaine)=>{}
 
 }
 
 
-class Memes extends Array{
+export class Memes extends Array{
 
     static ressourceName='/memes'
 
@@ -54,4 +74,4 @@ class Memes extends Array{
     }
 }
 
-const listeMemes= new Memes()
+//const listeMemes= new Memes()
