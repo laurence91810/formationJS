@@ -23,7 +23,7 @@ export class Images extends Array{
             .then(flux=>flux.json())
             .then(arr=>{
                 arr.map(element=>{
-                    console.log(element)
+                    //console.log(element)
                     this.push(element)
                 })
                 return arr

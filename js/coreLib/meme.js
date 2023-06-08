@@ -69,7 +69,7 @@ export class Memes extends Array{
                 arr.forEach(unique=>{
                     const meme = new Meme()
                     Object.assign(meme,unique)
-                    console.log(meme)
+                    //console.log(meme)
                     this.push(Object.freeze(meme))
                 })
                 return arr
