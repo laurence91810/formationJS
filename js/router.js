@@ -7,21 +7,26 @@ const routes=[
         name:'editor', 
         pathName:'/meme', 
         viewUrl:'/views/editor.html', 
-        pathRegex:/^\/meme(\/(?<id>\d{0,})?)?\/?$/
+        pathRegex:/^\/meme(\/(?<id>\d{0,})?)?\/?$/,
     },
     {
         name:'thumb', 
         pathName:'/thumbnail', 
         viewUrl:'/views/thumbnail.html', 
         pathRegex:/^\/thumbnail\/?$/, 
-        data:{memes:listeMemes,images:listeImages}
+        data:{memes:listeMemes,images:listeImages},
     },
     {
         name:'home', 
         pathName:'/', 
         viewUrl:'/views/home.html', 
-        pathRegex:/^\/(home)?\/?$/
-    }
+        pathRegex:/^\/(home)?\/?$/,
+    },
+    {
+        name:'404', 
+        templateText:'<h1>no Page</h1></hr><h3>ERROR : 404 Not Found</h3>',
+        pathRegex:/404/,
+    },
 ]
 
 
@@ -52,6 +57,10 @@ export class RouterDOM{
                 return true
             }
         })
+        if(undefined===this.#currentRoute){
+            //this.#currentRoute=routes.find(e=>e.name==='404')
+            return this.currentRoute='/404'
+        }
         //let templateText = sessionStorage.getItem(this.#currentRoute.name)
         if(undefined!==this.#currentRoute.templateText){
             this.#wrapTemplate(this.#currentRoute)
