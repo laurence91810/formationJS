@@ -1,4 +1,4 @@
-import { REST_ADR } from "./config.js"
+import { REST_ADR } from "../config/config.js"
 
 
 class Meme{
