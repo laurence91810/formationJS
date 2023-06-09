@@ -20,7 +20,7 @@ export class RouterDOM {
     this.#currentParams={}
     this.#currentRoute = routes.find((route) => {
       const m = route.pathRegex.exec(this.#currentUrl);
-      if (null === m) return false;
+      if (null === m) {return false}
       else {
         this.#currentParams = undefined!==m.groups?m.groups:{};
         return true;
@@ -30,7 +30,7 @@ export class RouterDOM {
       //preservation de la route
       //this.#currentRoute=routes.find(e=>e.name==='404')
       //sans preservation de la route avec redirection
-      return (this.currentRoute = "/404");
+      return this.currentRoute = "/404";
     }
     if (undefined !== this.#currentRoute.templateText) {
       this.#wrapTemplate(this.#currentRoute);
@@ -53,7 +53,7 @@ export class RouterDOM {
     if (undefined !== this.#currentRoute.controller) {
       this.#currentRoute.controller.wrapper=RouterDOM.viewWrapper
       this.#currentRoute.controller.params=this.#currentParams
-      this.refresh()
+      this.#currentRoute.controller.initView()
     }
   };
   refresh = () => {
@@ -61,11 +61,11 @@ export class RouterDOM {
       this.#currentRoute.controller.refresh()
     }
   }
-removeActiveNavbarLink(){
-  document.querySelectorAll('nav .active').forEach(e=>{
-    e.classList.remove('active')
-  })
+  removeActiveNavbarLink(){
+    document.querySelectorAll('nav .active').forEach(e=>{
+      e.classList.remove('active')
+    })
 
-}
+  }
 }
 export default new RouterDOM();

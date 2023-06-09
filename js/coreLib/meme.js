@@ -1,7 +1,7 @@
 import { REST_ADR } from "../config/config.js"
 
 
-class Meme{
+export class Meme{
     
     static ressourceName = '/memes'
     titre = ""
@@ -70,7 +70,7 @@ export class Memes extends Array{
                     const meme = new Meme()
                     Object.assign(meme,unique)
                     //console.log(meme)
-                    this.push(Object.freeze(meme))
+                    this.push(Object.seal(meme))
                 })
                 return arr
             })

@@ -1,6 +1,5 @@
 import { listeMemes } from "./coreLib/dataInstance.js"
 import { listeImages } from "./coreLib/dataInstance.js"
-import { DataFiller } from "./coreLib/dataFiller.js"
 
 
 const routes=[
@@ -84,7 +83,6 @@ export class RouterDOM{
 
     #wrapTemplate=(route)=>{
         const wrapper = document.querySelector('#main-wrapper')
-        const resultFilled = DataFiller.fillView(route.data,route.templateText+'')
         wrapper.innerHTML= route.templateText
     }
 

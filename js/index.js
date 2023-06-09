@@ -1,7 +1,6 @@
 import { MessageBox, ConfirmBox } from "./composantsWeb/modal.js"
-import {Memes} from './coreLib/meme.js'
-import {Images} from './coreLib/image.js'
-import {RouterDOM} from './router.js'
+import {RouterDOM} from './coreLib/router.js'
+import { listeImages, listeMemes } from "./coreLib/dataInstance.js"
 
 //const msgBox= new MessageBox()
 // const listeMemes= new Memes()
@@ -11,18 +10,20 @@ const router = new RouterDOM()
 
 class MemesDOM{
 
-    listeMemes= new Memes()
-    listeImages= new Images()
+    listeMemes= listeMemes
+    listeImages= listeImages
     constructor(){
 
         document.addEventListener('DOMContentLoaded',()=>{
             this.initNavbarLinks()
             //synchronisation des chargements
             Promise.all([this.listeMemes.load(),this.listeImages.load()])
-            .then(promisesValues=>{
+            .then(promisesValues=>{   
+                router.manageRoute();
+              //  router.refresh();
                 return promisesValues
             })
-            router.manageRoute();
+         
         })
     }
     initNavbarLinks=()=>{

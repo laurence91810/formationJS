@@ -1,14 +1,19 @@
 import  router  from "../coreLib/router.js";
-import { listeImgs, listeMemes } from "../coreLib/dataInstance.js";
+import { listeImages, listeMemes } from "../coreLib/dataInstance.js";
 
 export class ThumbnailController {
   images;
   memes;
   wrapper;
-  constructor(memes = listeMemes, images = listeImgs) {
+  constructor(memes = listeMemes, images = listeImages) {
     this.memes = memes;
     this.images = images;
   }
+
+  initView(){
+    this.refresh();
+  }
+
   refresh = () => {
     if (undefined === this.wrapper) {
       console.log("%c%s", "color:red", "le wrapper est pas definit")
